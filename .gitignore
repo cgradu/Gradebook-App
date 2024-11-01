@@ -4,3 +4,4 @@ Tema POO-CC (2022-2023).pdf
 # Ignore the entire out folder
 out/
 .idea
+.gitignore
