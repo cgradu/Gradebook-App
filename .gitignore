@@ -1,6 +1,6 @@
 # Ignore specific PDF file
-/Tema POO-CC (2022-2023).pdf
+Tema POO-CC (2022-2023).pdf
 
 # Ignore the entire out folder
-/out/
-/.idea
+out/
+.idea
