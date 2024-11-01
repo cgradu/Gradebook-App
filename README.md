@@ -1,37 +1,58 @@
-# Gradebook App
+# Gradebook-App
+An electronic gradebook for an Object-Oriented Programming course, featuring core classes such as `Catalog` and `Course`, along with design patterns including Observer, Singleton, Factory Method, and comprehensive testing.
 
-The Gradebook App is an electronic gradebook designed for object-oriented programming courses. It integrates various design patterns and focuses on comprehensive testing.
+## Project Architecture:
 
-## Architecture Overview
+### 1. Catalog Class
+- This is a singleton class that also implements the Observer design pattern.
+- Contains a list of observers (parents who will be notified when their children receive grades) and a list of courses within the catalog.
+- Key methods include adding and retrieving courses, adding and retrieving observers, and retrieving the singleton instance of the catalog.
 
-### `Catalog` Class
-- **Singleton Design Pattern**: Ensures a single instance of the catalog is used throughout the application, which is crucial for maintaining a consistent and centralized state of courses and observer lists.
-- **Observer Pattern**: Manages notifications efficiently, automating the process of informing parents about their child's grades without requiring manual updates.
+### 2. User Class
+- An abstract class containing two strings, `firstName` and `lastName`.
+- Used as a base class for four types of users (subclasses): `Student`, `Parent`, `Teacher`, and `Assistant`.
 
-### `User` Class Hierarchy
-- **Abstract Base**: Serves as a foundation for user types, promoting code reuse and reducing redundancy.
+#### Student
+- Contributes to the Observer pattern implementation.
+- Minimal implementation with a constructor for name and two additional fields, `mother` and `father`, representing the student's parents who will be notified when the student receives grades.
+- Methods include setters (to set the student’s mother and father) and a method to verify if a given observer is a parent of the student.
 
-#### Specific User Types
-- **Student**: Key player in the Observer pattern, linking grade notifications directly to parents, demonstrating a practical application of this pattern in educational settings.
-- **Parent**: Benefits from the Observer pattern by automatically receiving updates, improving communication and engagement in the educational process.
-- **Teacher** & **Assistant**: Facilitate dynamic grading strategies via the Visitor pattern, allowing for flexible grade assessment methods.
+#### Parent
+- Contributes to the Observer pattern implementation.
+- Has a list of notifications that parents will receive when their children (students) get grades.
+- Includes a constructor and an `update` method, which displays the grade received by the student.
 
-### `UserFactory`
-- Simplifies the process of creating user objects, reducing the complexity of instantiations and making the code more maintainable.
+#### Teacher
+- Contributes to the Visitor pattern implementation.
+- Methods include a constructor and `visit` to allow the course's lead teacher to modify grades.
 
-### `Grade` Class
-- Provides essential functionalities like grade calculation and comparison, showcasing the importance of encapsulating grade logic within a single, cohesive class.
+#### Assistant
+- Also contributes to the Visitor pattern.
+- Methods include a constructor and `visit` to allow any assistant of the course's lead teacher to modify grades.
 
-### `Group` Class
-- Represents a collection of students, highlighting the need for organizing students into manageable groups for educational purposes.
+- Additionally, the `UserFactory` class simplifies the instantiation of these four types of `User` classes. It has a method that takes a string with the class name and creates a `User` of that type using the first and last names provided as parameters.
 
-### `Course` Class Hierarchy
-- **Strategy Pattern**: Allows the application to switch between different course management strategies dynamically, reflecting real-world scenarios where course requirements might change.
+### 3. Grade Class
+- Contains four fields: `midtermGrade`, `examGrade`, `courseName` (the name of the course for which the grade is assigned), and `student` (the student to whom the grade is assigned).
+- Methods include `getTotal` (summing midterm and exam grades), getters and setters for field values, `toString`, `compareTo` (to compare two grades based on their total score), and `clone` (creates a `Grade` object with the same fields and values).
 
-## Design Patterns Explained
+### 4. Group Class
+- Extends a list of students.
+- Contains two fields: `ID` (the group name) and `assistant` (the assistant assigned to that group).
+- Methods include constructors and `toString`.
 
-- **Observer Pattern**: Vital for maintaining a low-coupling, high-cohesion design by allowing subjects and observers to interact without being tightly bound.
-- **Strategy Pattern**: Offers flexibility in how courses are managed, accommodating various teaching methods and assessment strategies without altering the system's core architecture.
-- **Visitor Pattern**: Enables specific actions (like grade modifications) to be performed on elements of an object structure, making the system more adaptable and easier to extend with new functionalities.
+### 5. Course Class
+- An abstract class with two subclasses: `FullCourse` and `PartialCourse`.
+- Contributes to the Strategy design pattern.
+- (Additional details of fields and methods can be added here.)
 
-This architecture facilitates a flexible and scalable gradebook system, incorporating best practices in object-oriented design and design patterns.
+### 6. Observer Pattern
+- Implements the Observer pattern to notify parents when their children receive grades.
+
+### 7. Strategy Pattern
+- Implements the Strategy pattern to provide flexible grading and course management.
+
+### 8. Visitor Pattern
+- Implements the Visitor pattern to allow course teachers and assistants to modify grades for students.
+
+This project is built to demonstrate Object-Oriented Programming principles through practical applications in course and student management, allowing parents to stay updated on students’ performance and ensuring structured, maintainable code.
