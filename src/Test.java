@@ -164,7 +164,7 @@ public class Test {
 
         //testare visitor
         ScoreVisitor scoreVisitor = new ScoreVisitor();
-        scoreVisitor.addExamScore(partialCourse.teacher, (Student) student3, "POO1", 1d);
+        scoreVisitor.addExamScore(partialCourse.teacher, (Student) student3, "POO", 1d);
         partialCourse.teacher.accept(scoreVisitor);
         System.out.println(((Parent) mother).notifications);
     }
