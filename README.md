@@ -35,5 +35,3 @@ The Gradebook App is an electronic gradebook designed for object-oriented progra
 - **Visitor Pattern**: Enables specific actions (like grade modifications) to be performed on elements of an object structure, making the system more adaptable and easier to extend with new functionalities.
 
 This architecture facilitates a flexible and scalable gradebook system, incorporating best practices in object-oriented design and design patterns.
-
-merge
