@@ -7,5 +7,5 @@
 /dataSources/
 /dataSources.local.xml
 # Ignore specific PDF file
-/Tema POO-CC (2022-2023).pdf
-/out/
+../Tema POO-CC (2022-2023).pdf
+../out/
